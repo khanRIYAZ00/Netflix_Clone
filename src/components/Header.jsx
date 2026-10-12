@@ -40,7 +40,7 @@ export default function Header({
           <Menu />
         </button>
         <button className="wordmark" onClick={() => onNavigate("Home")}>
-          STREAM<span>FLIX</span>
+          NET<span>FLIX</span>
         </button>
         <nav className={menuOpen ? "navLinks navOpen" : "navLinks"}>
           {navItems.map((item) => (

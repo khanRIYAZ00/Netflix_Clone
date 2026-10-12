@@ -3,7 +3,7 @@ import React from "react";
 export default function Footer({ onNavigate, onNotice }) {
   return (
     <footer>
-      <div className="footerBrand">STREAMFLIX</div>
+      <div className="footerBrand">NETFLIX</div>
       <div className="footerLinks">
         <button onClick={() => onNavigate("Help")}>Help Center</button>
         <button onClick={() => onNavigate("Settings")}>Settings</button>

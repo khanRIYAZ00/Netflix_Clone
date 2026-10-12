@@ -18,9 +18,18 @@ const emptyCatalog = {
   "New Releases": [],
 };
 
+const listStorageKey = "netflix-list";
+const legacyListStorageKey = "streamflix-list";
+
 function readSavedList() {
   try {
-    return JSON.parse(localStorage.getItem("streamflix-list") || "[]");
+    const savedList = localStorage.getItem(listStorageKey);
+    if (savedList !== null) return JSON.parse(savedList);
+
+    const legacyList = localStorage.getItem(legacyListStorageKey);
+    if (!legacyList) return [];
+    localStorage.setItem(listStorageKey, legacyList);
+    return JSON.parse(legacyList);
   } catch {
     return [];
   }
@@ -130,7 +139,7 @@ export default function App() {
         )
       : [...list, movie];
     setList(next);
-    localStorage.setItem("streamflix-list", JSON.stringify(next));
+    localStorage.setItem(listStorageKey, JSON.stringify(next));
     showNotice(exists ? "Removed from My List" : "Added to My List");
   };
 
@@ -202,7 +211,7 @@ export default function App() {
       ) : loading ? (
         <main className="apiState">
           <div className="loadingSpinner" />
-          <h1>Loading StreamFlix</h1>
+          <h1>Loading Netflix</h1>
           <p>Fetching movie and TV information from TMDB…</p>
         </main>
       ) : apiError ? (
@@ -225,7 +234,8 @@ export default function App() {
           apiStatus={apiStatus}
           onBack={() => go("Home")}
           onClearList={() => {
-            localStorage.removeItem("streamflix-list");
+            localStorage.removeItem(listStorageKey);
+            localStorage.removeItem(legacyListStorageKey);
             setList([]);
             showNotice("My List cleared");
           }}
@@ -256,7 +266,7 @@ export default function App() {
             {page !== "Home" && (
               <div className="pageHeading">
                 <div>
-                  <p className="kicker">BROWSE STREAMFLIX</p>
+                  <p className="kicker">BROWSE NETFLIX</p>
                   <h1>{page}</h1>
                 </div>
                 {page === "My List" && (

@@ -7,7 +7,7 @@ export default function InfoPage({ page, apiStatus, onBack, onClearList }) {
       <button className="backButton" onClick={onBack}>
         <ArrowLeft size={17} /> Back to Home
       </button>
-      <p className="kicker">STREAMFLIX</p>
+      <p className="kicker">NETFLIX</p>
       <h1>{page}</h1>
       {page === "Settings" ? (
         <>
