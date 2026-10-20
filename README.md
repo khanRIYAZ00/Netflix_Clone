@@ -4,6 +4,11 @@ A Netflix-inspired streaming UI built with React and Vite. This project recreate
 
 This is a frontend-only demo. It does not stream movies or provide a real backend, authentication system, or subscription logic. The player screen is intentionally a UI mockup, and the media content is sourced from TMDB.
 
+## Demo Link : 
+```text
+https://netflix-clone-a1fumjzi1-khanmohdriyaz00-2535.vercel.app/
+```
+
 ## Live Demo / Project Goal
 
 The goal of the project is to provide a polished front-end clone of Netflix's browsing experience while demonstrating:
